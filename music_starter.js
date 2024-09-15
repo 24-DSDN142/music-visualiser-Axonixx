@@ -3,6 +3,7 @@ let imgCircle2;
 let imgGradient;
 let firstRun = true;
 
+
 // vocal, drum, bass, and other are volumes ranging from 0 to 100
 function draw_one_frame(words, vocal, drum, bass, other, counter) {
   colorMode(HSB, 100);
@@ -21,14 +22,14 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   }
   
 
-
   let bassMap1 = map(bass, 0, 100, 1, 2);
   let bassMap2 = map(bass, 0, 100, 1, 1.5)
-  let drumMap = map(drum, 0, 100, 0, 900);
+  let drumMap = map(drum, 0, 100, 370, 900);
   let vocalMap = map(vocal, 0, 100, 0, 30);
   let vocalMap2 = map(vocal, 0, 100, 0.5, 0.55);
   
-
+  let c = color((other + 50 > 100) ? other - 50 : other + 50, 
+  80, 80, 70);
   
 
 
@@ -57,24 +58,33 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
   pop();
 
 
-  stroke(
-    (other + 50 > 100) ? other - 50 : other + 50, 
-    80, 80
-  );
-  fill((other + 50 > 100) ? other - 50 : other + 50, 
-  80, 80)
+  //stroke(
+  //  (other + 50 > 100) ? other - 50 : other + 50, 
+  //  80, 80
+  //);
+  //fill((other + 50 > 100) ? other - 50 : other + 50, 
+  //80, 80)
+  noStroke();
 
+  //strokeWeight(15);
+  //line(width/2 -130, height/2+90, 200+drum, height/2-drumMap);
+  //line(width/2 -130, height/2+90, 100, height/2-drumMap);
+  //line(width/2 -130, height/2+90, 0-drum, height/2-drumMap);
+  fill(c);
+  triangle(width/2-130, height/2+90, 350+drum, height/2-drumMap, 200+drum, height/2-drumMap);
+  triangle(width/2 -130, height/2+90, 150+drum, height/2-drumMap, 0+drum, height/2-drumMap);
+  triangle(width/2 -130, height/2+90, -250+drum, height/2-drumMap, -50+drum, height/2-drumMap);
 
-  strokeWeight(15);
-  line(width/2 -130, height/2+90, 200+drum, height/2-drumMap);
-  line(width/2 -130, height/2+90, 100, height/2-drumMap);
-  line(width/2 -130, height/2+90, 0-drum, height/2-drumMap);
+  c = color(other, 80, 80, 70);
+  //fill(other, 80, 80);
+  fill(c);
 
-  stroke(other, 80, 80);
-
-  line(width/2 +90, height/2+90, width-200-drum, height/2-drumMap);
-  line(width/2 +90, height/2+90, width -100, height/2-drumMap);
-  line(width/2 +90, height/2+90, width+drum, height/2-drumMap);
+  triangle(width/2 +130, height/2+90, width-350-drum, height/2-drumMap, width-200-drum, height/2-drumMap);
+  triangle(width/2 +130, height/2+90, width-150-drum, height/2-drumMap, width-drum, height/2-drumMap);
+  triangle(width/2 +130, height/2+90, width+250-drum, height/2-drumMap, width+50-drum, height/2-drumMap);
+  //line(width/2 +90, height/2+90, width-200-drum, height/2-drumMap);
+  //line(width/2 +90, height/2+90, width -100, height/2-drumMap);
+  //line(width/2 +90, height/2+90, width+drum, height/2-drumMap);
 
   strokeWeight(5);
   stroke(
@@ -82,14 +92,14 @@ function draw_one_frame(words, vocal, drum, bass, other, counter) {
     10, 90
   );
 
-  line(width/2 -130, height/2+90, 200+drum, height/2-drumMap);
-  line(width/2 -130, height/2+90, 100, height/2-drumMap);
-  line(width/2 -130, height/2+90, 0-drum, height/2-drumMap);
+  //line(width/2 -130, height/2+90, 200+drum, height/2-drumMap);
+  //line(width/2 -130, height/2+90, 100, height/2-drumMap);
+  //line(width/2 -130, height/2+90, 0-drum, height/2-drumMap);
 
-  stroke(drum, 10, 90);
-  line(width/2 +90, height/2+90, width-200-drum, height/2-drumMap);
-  line(width/2 +90, height/2+90, width -100, height/2-drumMap);
-  line(width/2 +90, height/2+90, width+drum, height/2-drumMap);
+  //stroke(drum, 10, 90);
+  //line(width/2 +90, height/2+90, width-200-drum, height/2-drumMap);
+  //line(width/2 +90, height/2+90, width -100, height/2-drumMap);
+  //line(width/2 +90, height/2+90, width+drum, height/2-drumMap);
 
   strokeWeight(1);
   stroke(100);
